@@ -15,6 +15,7 @@ public class AlunoController {
         this.alunoService = alunoService;
     }
 
+
     @GetMapping
     public List<Aluno> listaDeAlunos() {
         return alunoService.buscarAlunos();
@@ -25,14 +26,14 @@ public class AlunoController {
         return alunoService.salvarAluno(aluno);
     }
 
-    @GetMapping("/{id}")
-    public Aluno BuscarAlunoId(@PathVariable Long Id) {
-        return alunoService.buscarAlunoId(Id);
+    @GetMapping("/id")
+    public Aluno BuscarAlunoId(@PathVariable Long id) {
+        return alunoService.buscarAlunoId(id);
     }
 
-    @PutMapping("/{id}")
-    public Aluno atualizarAluno(@PathVariable Long Id, @RequestBody Aluno alunoAtualizado) {
-        Aluno verificaAluno = alunoService.buscarAlunoId(Id);
+    @PutMapping("/id")
+    public Aluno atualizarAluno(@PathVariable Long id, @RequestBody Aluno alunoAtualizado) {
+        Aluno verificaAluno = alunoService.buscarAlunoId(id);
         if (verificaAluno == null) return null;
 
         verificaAluno.setNomeAluno(alunoAtualizado.getNomeAluno());
@@ -42,9 +43,9 @@ public class AlunoController {
         return alunoService.salvarAluno(alunoAtualizado);
     }
 
-    @GetMapping("/{id}")
-    public void deletarAluno(@PathVariable Long Id) {
-        alunoService.deletarAluno(Id);
+    @DeleteMapping("/id")
+    public void deletarAluno(@PathVariable Long id) {
+        alunoService.deletarAluno(id);
     }
 
 }

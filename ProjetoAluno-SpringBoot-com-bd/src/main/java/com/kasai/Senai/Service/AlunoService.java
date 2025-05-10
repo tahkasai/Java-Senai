@@ -17,13 +17,15 @@ public class AlunoService {
     public List<Aluno> buscarAlunos(){
         return alunoRepository.findAll();
     }
+
     public Aluno salvarAluno(Aluno aluno){
         return alunoRepository.save(aluno);
     }
-    public void deletarAluno(Long Id){
-        alunoRepository.deleteById(Id);
+    public void deletarAluno(Long id){
+        alunoRepository.deleteById(id);
     }
-    public Aluno buscarAlunoId(Long Id){
-        return alunoRepository.findById(Id).orElse(null);
+
+    public Aluno buscarAlunoId(Long id){
+        return alunoRepository.findById(id).orElse(null);
     }
 }
