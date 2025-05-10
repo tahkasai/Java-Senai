@@ -1,5 +1,13 @@
 package com.kasai.Senai.Controlle;
 
+import com.kasai.Senai.Model.Aluno;
+import com.kasai.Senai.Service.AlunoService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/alunos")
 public class AlunoControlle {
     private final AlunoService alunoService;
 
