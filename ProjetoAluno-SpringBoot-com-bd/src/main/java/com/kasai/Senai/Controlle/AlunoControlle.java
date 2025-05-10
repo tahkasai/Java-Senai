@@ -30,6 +30,18 @@ public class AlunoControlle {
         return alunoService.buscarAlunoId(Id);
     }
 
+    @PutMapping("/id")
+    public Aluno atualizarAluno(@PathVariable Long Id, @RequestBody Aluno alunoAtualizado) {
+        Aluno verificaAluno = alunoService.buscarAlunoId(Id);
+        if (verificaAluno == null) return null;
+
+        verificaAluno.setNomeAluno(alunoAtualizado.getNomeAluno());
+        verificaAluno.setEmailAluno(alunoAtualizado.getEmailAluno());
+        verificaAluno.setTelefoneAluno(alunoAtualizado.getTelefoneAluno());
+
+        return alunoService.salvarAluno(alunoAtualizado);
+    }
+
     @GetMapping("/id")
     public void deletarAluno(@PathVariable Long Id){
         alunoService.deletarAluno(Id);
