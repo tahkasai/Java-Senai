@@ -2,17 +2,16 @@ package com.kasai.Senai.Controlle;
 
 import com.kasai.Senai.Model.Aluno;
 import com.kasai.Senai.Service.AlunoService;
-import jakarta.persistence.Id;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/alunos")
-public class AlunoControlle {
+public class AlunoController {
     private final AlunoService alunoService;
 
-    public AlunoControlle(AlunoService alunoService) {
+    public AlunoController(AlunoService alunoService) {
         this.alunoService = alunoService;
     }
 
@@ -26,12 +25,12 @@ public class AlunoControlle {
         return alunoService.salvarAluno(aluno);
     }
 
-    @GetMapping("/id")
-    public Aluno BuscarAlunoId(Long Id) {
+    @GetMapping("/{id}")
+    public Aluno BuscarAlunoId(@PathVariable Long Id) {
         return alunoService.buscarAlunoId(Id);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Aluno atualizarAluno(@PathVariable Long Id, @RequestBody Aluno alunoAtualizado) {
         Aluno verificaAluno = alunoService.buscarAlunoId(Id);
         if (verificaAluno == null) return null;
@@ -43,7 +42,7 @@ public class AlunoControlle {
         return alunoService.salvarAluno(alunoAtualizado);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public void deletarAluno(@PathVariable Long Id) {
         alunoService.deletarAluno(Id);
     }
